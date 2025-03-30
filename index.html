@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ego vs Essence</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-800 font-sans">
+
+  <!-- Intro Page -->
+  <div id="intro" class="min-h-screen flex flex-col justify-center items-center p-8 text-center bg-gradient-to-br from-white to-gray-200">
+    <div class="max-w-2xl bg-white p-10 rounded-3xl shadow-lg">
+      <h1 class="text-4xl font-bold mb-4 text-indigo-700">Ego vs Essence</h1>
+      <p class="text-lg mb-6">
+        This tool helps you reflect on whether you're operating from <strong>ego</strong>—driven by protection, performance, and proving—or from your <strong>essence</strong>—your truest, most grounded self.
+      </p>
+      <p class="mb-6">
+        Through 20 questions, you'll uncover the patterns shaping your decisions, energy, and identity. The result will reveal your current mode of being and offer insights to realign with your deeper self.
+      </p>
+      <button onclick="startQuiz()" class="bg-indigo-600 text-white px-6 py-3 rounded-full text-lg shadow hover:bg-indigo-700 transition">
+        Begin Your Reflection
+      </button>
+    </div>
+  </div>
+
+  <!-- Quiz Container -->
+  <div class="hidden max-w-3xl mx-auto p-6" id="quizContainer"></div>
+
+  <script>
+    const data = {"questions": [{"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}, {"text": "You\u2019re facing a major decision with uncertain outcomes. How do you approach it?", "options": ["I analyze all possible outcomes and avoid risk.", "I try to choose what looks best to others.", "I check in with what feels true to me, even if it\u2019s scary.", "I act based on values, not just outcomes."]}, {"text": "When someone challenges your idea in a group setting, what\u2019s your immediate internal response?", "options": ["I feel irritated and want to prove I\u2019m right.", "I stay quiet but stew internally.", "I\u2019m curious about their perspective, even if I feel a bit defensive.", "I welcome the input\u2014it might make the idea better."]}, {"text": "You receive unexpected praise for something you\u2019ve done. How do you feel?", "options": ["Relieved\u2014people finally see my value.", "Happy but wondering if I can live up to it again.", "Grateful, but I know it\u2019s not about the praise.", "Motivated to keep showing up in alignment with who I am."]}], "archetypes": [{"name": "Strong Defender", "icon": "\ud83d\udee1\ufe0f", "range": [0, 6], "description": "You often react quickly and protect yourself fiercely.", "reflection": "What would it look like to soften without losing your strength?"}, {"name": "Moderate Defender", "icon": "\ud83d\udee1\ufe0f", "range": [7, 12], "description": "You\u2019re learning to choose softness, but still armor up in unknowns.", "reflection": "Where are you rehearsing strength when you need support?"}, {"name": "Mild Defender", "icon": "\ud83d\udee1\ufe0f", "range": [13, 18], "description": "You\u2019re loosening your defenses, but safety still shapes your choices.", "reflection": "What does safety actually feel like in your body?"}, {"name": "Strong Seeker", "icon": "\ud83d\udd0d", "range": [19, 24], "description": "You analyze everything. Growth can feel like a loop.", "reflection": "Where am I waiting for clarity instead of creating it?"}, {"name": "Moderate Seeker", "icon": "\ud83d\udd0d", "range": [25, 29], "description": "You\u2019re aware and evolving, but still looking outside yourself for signs.", "reflection": "What would it take to trust yourself fully in one area of life?"}, {"name": "Mild Seeker", "icon": "\ud83d\udd0d", "range": [30, 34], "description": "You\u2019re living more aligned, but still feel like you're 'becoming.'", "reflection": "Where have you already arrived but haven\u2019t claimed it?"}, {"name": "Mild Alchemist", "icon": "\ud83d\udd25", "range": [35, 39], "description": "You\u2019re tuning in to inner wisdom, testing what\u2019s true for you.", "reflection": "What would it feel like to fully back your own insight?"}, {"name": "Moderate Alchemist", "icon": "\ud83d\udd25", "range": [40, 44], "description": "You\u2019re discovering your voice but still seek polish before expression.", "reflection": "What truth do you keep editing before you share it?"}, {"name": "Strong Alchemist", "icon": "\ud83d\udd25", "range": [45, 49], "description": "You transmute fear into clarity, but risk burning out.", "reflection": "What if rest was part of the ritual?"}, {"name": "Mild Luminary", "icon": "\ud83c\udf0c", "range": [50, 53], "description": "You\u2019re quietly anchored in your values. You\u2019re a tuning fork, not a trumpet.", "reflection": "Where are you waiting to be validated for what you already know?"}, {"name": "Moderate Luminary", "icon": "\ud83c\udf0c", "range": [54, 57], "description": "You lead by example without attachment to outcome.", "reflection": "What kind of silence do you fear the most?"}, {"name": "Strong Luminary", "icon": "\ud83c\udf0c", "range": [58, 60], "description": "You move like meaning. You shine even when no one\u2019s watching.", "reflection": "Where are you dimming what\u2019s already glowing?"}]};
+    const state = { current: 0, answers: [] };
+    const intro = document.getElementById('intro');
+    const quizContainer = document.getElementById('quizContainer');
+
+    function startQuiz() {
+      intro.classList.add('hidden');
+      quizContainer.classList.remove('hidden');
+      showQuestion(0);
+    }
+
+    function showQuestion(index) {
+      const q = data.questions[index];
+      quizContainer.innerHTML = `
+        <div class="bg-white rounded-2xl shadow p-6">
+          <h2 class="text-xl font-semibold mb-4">${index + 1}. ${q.text}</h2>
+          <div class="space-y-2">
+            ${q.options.map((opt, i) => `
+              <button class="block w-full bg-gray-100 p-3 rounded-xl hover:bg-indigo-100" data-score="${i}">${opt}</button>
+            `).join('')}
+          </div>
+          <div class="text-sm text-gray-500 mt-4 text-center">${index + 1} of ${data.questions.length}</div>
+        </div>
+      `;
+      document.querySelectorAll('button').forEach(btn => {
+        btn.onclick = () => {
+          state.answers.push(+btn.dataset.score);
+          state.current++;
+          if (state.current < data.questions.length) {
+            showQuestion(state.current);
+          } else {
+            showResult();
+          }
+        };
+      });
+    }
+
+    function showResult() {
+      const total = state.answers.reduce((a, b) => a + b, 0);
+      const result = data.archetypes.find(r => total >= r.range[0] && total <= r.range[1]);
+      quizContainer.innerHTML = `
+        <div class="bg-white rounded-2xl shadow p-8 text-center">
+          <div class="text-6xl mb-4">${result.icon}</div>
+          <h2 class="text-2xl font-bold mb-2">You are ${result.name}</h2>
+          <p class="mb-4 text-gray-700">${result.description}</p>
+          <p class="italic text-indigo-600">Reflection: ${result.reflection}</p>
+        </div>
+      `;
+    }
+
+    showQuestion(0);
+  </script>
+</body>
+</html>
